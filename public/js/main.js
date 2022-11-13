@@ -135,6 +135,6 @@ canvas.addEventListener("mouseup", () => isDrawing = false);
 
 // Mobile
 
-canvas.addEventListener("touchstart",startDraw);
-canvas.addEventListener("touchmove",drawing);
-canvas.addEventListener("touchend",() => isDrawing = false);
+canvas.addEventListener("touchstart",startDraw,true);
+canvas.addEventListener("touchmove",drawing,true);
+canvas.addEventListener("touchend",() => isDrawing = false,true);
