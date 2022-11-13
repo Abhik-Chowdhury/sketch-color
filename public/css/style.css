@@ -159,6 +159,7 @@ section{
 }
 .board-canvas{
     flex: 1;
+    cursor: auto;
 }
 
 .board-canvas canvas{
