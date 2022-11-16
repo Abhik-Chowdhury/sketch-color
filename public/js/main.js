@@ -6,7 +6,6 @@ const canvas = document.querySelector("canvas"),
     colorPicker = document.querySelector("#color-picker"),
     clearCanvas = document.querySelector(".clear-canvas"),
     saveImage = document.querySelector(".save-img"),
-
     ctx = canvas.getContext("2d",{willReadFrequently:true});
 // Global value with default value 
     let preMouseX, prevMouseY, snapshot,
@@ -14,6 +13,7 @@ const canvas = document.querySelector("canvas"),
     selectedTool = "brush",
     brushwidth = 5,
     selectedColor = "#000"
+
 // set the canvas Background in dowload time it will be white
 const setCanvasBackground = () => {
     ctx.fillStyle = "#fff";
@@ -35,6 +35,7 @@ const drawRect = (e) => {
         return ctx.strokeRect(e.offsetX, e.offsetY, preMouseX - e.offsetX, prevMouseY - e.offsetY);
     }
     ctx.fillRect(e.offsetX, e.offsetY, preMouseX - e.offsetX, prevMouseY - e.offsetY);
+
 }
 // Draw the Circle
 const drawCircle = (e) => {
@@ -81,6 +82,8 @@ const drawing = (e) => {
         drawCircle(e)
     } else if (selectedTool === "triangle") {
         drawTriangle(e)
+    }else if(selectedTool === "select"){
+
     }
 }
 
@@ -129,12 +132,6 @@ saveImage.addEventListener("click", () => {
     link.click(); // clicking link to download image 
 });
 
-canvas.addEventListener("mousedown", startDraw);
-canvas.addEventListener("mousemove", drawing);
-canvas.addEventListener("mouseup", () => isDrawing = false);
-
-// Mobile
-
-canvas.addEventListener("touchstart",startDraw,true);
-canvas.addEventListener("touchmove",drawing,true);
-canvas.addEventListener("touchend",() => isDrawing = false,true);
+canvas.addEventListener('pointerdown',startDraw);
+canvas.addEventListener('pointermove',drawing);
+canvas.addEventListener('pointerup', () => isDrawing = false);
